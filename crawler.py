@@ -46,7 +46,8 @@ class LeetCodeCrawler:
                 browser.get(login_url)
 
                 WebDriverWait(browser, 24 * 60 * 3600).until(
-                    lambda driver: driver.current_url.index("login") < 0
+                    #.index:Raises ValueError if the value is not present. 会抛出错误
+                    lambda driver: driver.current_url=="https://leetcode.com/"
                 )
                 browser_cookies = browser.get_cookies()
                 with open(COOKIE_PATH, 'wb') as f:
